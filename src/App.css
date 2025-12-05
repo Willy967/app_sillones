@@ -1,0 +1,65 @@
+/* ---- Grid gallery: evita huecos y distribuye de forma uniforme ---- */
+.grid-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  align-items: start;
+  /* fuerza el reordenamiento compacto en navegadores modernos */
+  grid-auto-flow: dense;
+}
+
+/* cada item toma el espacio natural del card */
+.grid-item {
+  display: block;
+}
+
+/* tarjetas adaptativas (sin alturas fijas) */
+.grid-item .card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* imágenes dentro de tarjetas: altura automática para evitar saltos */
+.grid-item .card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Ajuste del título "Puffs y Mesas" para que no genere huecos */
+.grid-item .card h3 {
+  margin: 12px 0 6px;
+}
+
+/* ---- Features (servicios incluidos) reajustados para aparecer uniforme ---- */
+.feature-box {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  /* 2 columnas en desktop */
+  gap: 16px;
+  margin-top: 18px;
+  align-items: start;
+}
+
+/* para pantallas grandes 3-4 columnas (ajusta si querés) */
+@media (min-width: 1200px) {
+  .feature-box {
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+  }
+}
+
+/* móvil: apilar verticalmente */
+@media (max-width: 900px) {
+  .feature-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Si querés limpiar los márgenes excesivos en la parte baja */
+.grid-2 {
+  margin-top: 22px;
+  /* ajusta si lo ves muy pegado */
+}
